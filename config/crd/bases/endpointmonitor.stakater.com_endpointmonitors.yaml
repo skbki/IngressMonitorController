@@ -358,6 +358,66 @@ spec:
                     description: Add one or more tags for the check separated by `,`
                     type: string
                 type: object
+              uptimeKumaConfig:
+                description: Configuration for Uptime Kuma Monitor Provider
+                properties:
+                  basicAuthPassword:
+                    description: Basic authentication password (environment variable
+                      name)
+                    type: string
+                  basicAuthUser:
+                    description: Basic authentication username
+                    type: string
+                  body:
+                    description: Request body (for POST, PUT, PATCH requests)
+                    type: string
+                  expiryNotification:
+                    description: Certificate expiry notification (days before expiry)
+                    type: integer
+                  headers:
+                    description: Request headers in JSON format
+                    type: string
+                  ignoreTls:
+                    description: Ignore TLS/SSL errors
+                    type: boolean
+                  interval:
+                    description: The check interval in seconds (minimum 20)
+                    minimum: 20
+                    type: integer
+                  invertKeyword:
+                    description: Invert keyword check
+                    type: boolean
+                  keyword:
+                    description: Keywords to check in response
+                    type: string
+                  maxRedirects:
+                    description: Maximum number of redirects to follow (0 to disable)
+                    type: integer
+                  method:
+                    description: Request method (GET, POST, PUT, PATCH, DELETE, HEAD,
+                      OPTIONS)
+                    enum:
+                    - GET
+                    - POST
+                    - PUT
+                    - PATCH
+                    - DELETE
+                    - HEAD
+                    - OPTIONS
+                    type: string
+                  notificationIDList:
+                    description: Push notification settings
+                    type: string
+                  proxyId:
+                    description: Proxy settings
+                    type: integer
+                  tags:
+                    description: Tags for the monitor (comma-separated)
+                    type: string
+                  timeout:
+                    description: Timeout in seconds
+                    type: integer
+                type: object
               uptimeRobotConfig:
                 description: Configuration for UptimeRobot Monitor Provider
                 properties:

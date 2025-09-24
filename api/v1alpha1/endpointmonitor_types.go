@@ -75,6 +75,10 @@ type EndpointMonitorSpec struct {
 	// Configuration for Grafana Cloud Monitor Provider
 	// +optional
 	GrafanaConfig *GrafanaConfig `json:"grafanaConfig,omitempty"`
+
+	// Configuration for Uptime Kuma Monitor Provider
+	// +optional
+	UptimeKumaConfig *UptimeKumaConfig `json:"uptimeKumaConfig,omitempty"`
 }
 
 // UptimeRobotConfig defines the configuration for UptimeRobot Monitor Provider
@@ -418,6 +422,71 @@ type GrafanaConfig struct {
 	// +kubebuilder:validation:Enum=none;low;medium;high
 	// +kubebuilder:default=none
 	AlertSensitivity string `json:"alertSensitivity,omitempty"`
+}
+
+// UptimeKumaConfig defines the configuration for Uptime Kuma Monitor Provider
+type UptimeKumaConfig struct {
+	// The check interval in seconds (minimum 20)
+	// +kubebuilder:validation:Minimum=20
+	// +optional
+	Interval int `json:"interval,omitempty"`
+
+	// Timeout in seconds
+	// +optional
+	Timeout int `json:"timeout,omitempty"`
+
+	// Maximum number of redirects to follow (0 to disable)
+	// +optional
+	MaxRedirects int `json:"maxRedirects,omitempty"`
+
+	// Request method (GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS)
+	// +kubebuilder:validation:Enum=GET;POST;PUT;PATCH;DELETE;HEAD;OPTIONS
+	// +optional
+	Method string `json:"method,omitempty"`
+
+	// Request body (for POST, PUT, PATCH requests)
+	// +optional
+	Body string `json:"body,omitempty"`
+
+	// Request headers in JSON format
+	// +optional
+	Headers string `json:"headers,omitempty"`
+
+	// Basic authentication username
+	// +optional
+	BasicAuthUser string `json:"basicAuthUser,omitempty"`
+
+	// Basic authentication password (environment variable name)
+	// +optional
+	BasicAuthPassword string `json:"basicAuthPassword,omitempty"`
+
+	// Keywords to check in response
+	// +optional
+	Keyword string `json:"keyword,omitempty"`
+
+	// Invert keyword check
+	// +optional
+	InvertKeyword bool `json:"invertKeyword,omitempty"`
+
+	// Ignore TLS/SSL errors
+	// +optional
+	IgnoreTls bool `json:"ignoreTls,omitempty"`
+
+	// Certificate expiry notification (days before expiry)
+	// +optional
+	ExpiryNotification int `json:"expiryNotification,omitempty"`
+
+	// Push notification settings
+	// +optional
+	NotificationIDList string `json:"notificationIDList,omitempty"`
+
+	// Proxy settings
+	// +optional
+	ProxyId int `json:"proxyId,omitempty"`
+
+	// Tags for the monitor (comma-separated)
+	// +optional
+	Tags string `json:"tags,omitempty"`
 }
 
 // URLSource represents the set of resources to fetch the URL from
