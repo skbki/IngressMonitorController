@@ -1,0 +1,39 @@
+apiVersion: endpointmonitor.stakater.com/v1alpha1
+kind: EndpointMonitor
+metadata:
+  name: stakater-website-uptimekuma
+  namespace: default
+spec:
+  forceHttps: true
+  url: https://stakater.com/
+  providers: UptimeKuma
+  uptimeKumaConfig:
+    interval: 60      # Check every 60 seconds
+    timeout: 30       # 30 second timeout
+    method: GET
+    maxRedirects: 5
+    ignoreTls: false
+    keyword: "Stakater"
+    invertKeyword: false
+    expiryNotification: 7  # Alert 7 days before cert expiry
+    tags: "stakater,website,production"
+---
+apiVersion: endpointmonitor.stakater.com/v1alpha1
+kind: EndpointMonitor
+metadata:
+  name: api-health-check-uptimekuma
+  namespace: default
+spec:
+  url: https://api.example.com/health
+  providers: UptimeKuma
+  uptimeKumaConfig:
+    interval: 120
+    timeout: 45
+    method: POST
+    body: '{"check": "health"}'
+    headers: '{"Content-Type": "application/json"}'
+    basicAuthUser: "healthcheck"
+    basicAuthPassword: "HEALTH_CHECK_PASSWORD"
+    keyword: "healthy"
+    notificationIDList: "1,2,3"
+    tags: "api,health"
