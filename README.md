@@ -23,6 +23,7 @@ Currently we support the following monitors:
 - [Pingdom](https://pingdom.com) ([Additional Config](docs/pingdom-configuration.md)) (Not fully tested)
 - [StatusCake](https://www.statuscake.com) ([Additional Config](docs/statuscake-configuration.md))
 - [Uptime](https://uptime.com) ([Additional Config](docs/uptime-configurations.md))
+- [Uptime Kuma](https://github.com/louislam/uptime-kuma) ([Additional Config](docs/uptimekuma-configurations.md))
 - [Updown](https://updown.io/) ([Additional Config](docs/updown-configuration.md))
 - [Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/monitor-web-app-availability) ([Additional Config](docs/appinsights-configuration.md))
 - [gcloud](https://cloud.google.com/monitoring/uptime-checks) ([Additional Config](docs/gcloud-configuration.md))
